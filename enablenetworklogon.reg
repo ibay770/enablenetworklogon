@@ -1,35 +1,42 @@
 Windows Registry Editor Version 5.00
 
-; Allow blank passwords for network access
+; ✅ Start essential networking services
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Browser]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon]
+"Start"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP]
+"Start"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dhcp]
+"Start"=dword:00000002
+
+; ✅ Enable Network Discovery-related services
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FDResPub]
+"Start"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\upnphost]
+"Start"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SSDPSRV]
+"Start"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lltdsvc]
+"Start"=dword:00000003
+
+; ✅ Open firewall for file/printer sharing and network discovery
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\Services\FileAndPrint]
+"Enabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\Services\NetworkDiscovery]
+"Enabled"=dword:00000001
+
+; ✅ Relax anonymous access restrictions for LAN file sharing
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa]
-"LimitBlankPasswordUse"=dword:00000000
-
-; Enable network discovery
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters]
-"GlobalQueryBlockList"=-
-
-; Enable file and printer sharing
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
-"SMB1"=dword:00000001
-"SMB2"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters]
-"RequireSecuritySignature"=dword:00000000
-"EnableSecuritySignature"=dword:00000000
-
-; Enable sharing of public folders
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-"LocalAccountTokenFilterPolicy"=dword:00000001
-
-; Ensure network sharing settings are enabled
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
-"EnableFileSharing"=dword:00000001
-"EnableNetworkDiscovery"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile]
-"EnableFileSharing"=dword:00000001
-"EnableNetworkDiscovery"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PrivateProfile]
-"EnableFileSharing"=dword:00000001
-"EnableNetworkDiscovery"=dword:00000001
+"restrictanonymous"=dword:00000000
+"restrictanonymoussam"=dword:00000000

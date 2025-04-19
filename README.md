@@ -1,5 +1,7 @@
 # 🖧 Windows Network Sharing Fix
 
+Download here: https://github.com/ibay770/enablenetworklogon/blob/main/enablenetworklogon.reg
+
 This repository contains a comprehensive `.reg` file and batch script to fix common Windows file-sharing and network discovery issues.  
 
 If you're getting errors like:

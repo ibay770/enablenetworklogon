@@ -2,6 +2,12 @@
 
 Download here: https://github.com/ibay770/enablenetworklogon/blob/main/enablenetworklogon.reg
 
+
+This fixes the error:
+
+You might not have permission to use this network resource.
+
+
 This repository contains a comprehensive `.reg` file and batch script to fix common Windows file-sharing and network discovery issues.  
 
 If you're getting errors like:
